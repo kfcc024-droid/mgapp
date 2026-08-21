@@ -133,7 +133,7 @@ with tab1:
         with st.form("budget_entry_form", clear_on_submit=True):
             selected_member = st.selectbox(
                 "팀원 이름", 
-                ["부장님", "김팀장", "이대리", "박사원", "최주임", "직접 입력"]
+                ["박용은", "홍성강", "이주영", "오길규", "이상태", "직접 입력"]
             )
             if selected_member == "직접 입력":
                 selected_member = st.text_input("팀원 이름 직접 입력")
