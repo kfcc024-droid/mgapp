@@ -311,8 +311,12 @@ with tab2:
         )
         pivot_df["월별 합계"] = pivot_df.sum(axis=1)
         
-        # Format currency for table display
-        formatted_pivot = pivot_df.applymap(lambda x: f"{int(x):,}원")
+        # Format currency for table display (Pandas 2.2+ compatibility fix)
+        if hasattr(pivot_df, "map"):
+            formatted_pivot = pivot_df.map(lambda x: f"{int(x):,}원")
+        else:
+            formatted_pivot = pivot_df.applymap(lambda x: f"{int(x):,}원")
+
         st.dataframe(formatted_pivot, use_container_width=True)
 
 with tab3:
